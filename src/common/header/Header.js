@@ -28,10 +28,10 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {Link} from 'react-router-dom';
 
-//importing the css file of the header
+//Header Css
 import './Header.css';
 
-//styles for the header using breakpoints to make the header responsive
+//Responsive header using Breakpoints
 const styles = theme => ({
     grow: {
         flexGrow: 1,
@@ -76,7 +76,7 @@ const styles = theme => ({
     },
 });
 
-// theme for changing the border bottom color of the searchbox to white when customer clicks on the serach field 
+// Search Field Change color to white on click
 const theme = createMuiTheme({
     palette: {
         primary: {
@@ -85,7 +85,7 @@ const theme = createMuiTheme({
     }
 });
 
-//Modal Styles
+//Modals
 const customStyles = {
     content: {
         left: '50%',
@@ -97,7 +97,6 @@ const customStyles = {
     }
 };
 
-// Tab container inside the modal
 const TabContainer = function (props) {
     return (
         <Typography component="div" style={{padding: 0, textAlign: 'center'}}>
@@ -154,13 +153,13 @@ class Header extends Component {
                 <AppBar position="static" className={classes.appBar}>
                     {/* Toolbar that contains app logo, searchbox and login button */}
                     <Toolbar className={classes.headerTools}>
-                        {/* app logo inside iconButton*/}
+                        {/*Logo Holder*/}
                         <IconButton disableRipple={true} className={classes.logo} edge="start" color="inherit"
                                     aria-label="app logo">
                             <FastfoodIcon style={{ fontSize: 35 }}/>
                         </IconButton>
                         <div className={classes.grow}/>
-                        {/* searchbox will be displayed only if needed */}
+                        {/* SearchBox */}
                         {this.props.showSearchBox ?
                             <div className={classes.searchBox}>
                                 <ThemeProvider theme={theme}>
@@ -183,7 +182,7 @@ class Header extends Component {
                             : null
                         }
                         <div className={classes.grow}/>
-                        {/* If customer is not logged in then it displays login button otherwise displays the customer's firstname */}
+                        {/* Name of the user when logged in else display LOGIN*/}
                         {!this.state.loggedIn ?
                             <div className={classes.headerLoginBtn}>
                                 <Button variant="contained" color="default" startIcon={<AccountCircle/>}
@@ -208,7 +207,7 @@ class Header extends Component {
                         }
                     </Toolbar>
                 </AppBar>
-                {/* displays login modal if customer clicks on the login button, modal contains two tabs one for login and one for signup */}
+                {/* Login Modal*/}
                 <Modal
                     ariaHideApp={false}
                     isOpen={this.state.modalIsOpen}
@@ -219,7 +218,6 @@ class Header extends Component {
                         <Tab label="Login"/>
                         <Tab label="Signup"/>
                     </Tabs>
-                    {/* If value is 0 then displays the first tab of the modal */}
                     {this.state.value === 0 &&
                     <TabContainer>
                         {/* login form with contact no and password input fields */}
@@ -304,7 +302,7 @@ class Header extends Component {
                     </TabContainer>
                     }
                 </Modal>
-                {/* login snackbar to display the message if customer login is successful  */}
+                {/* Login Successful snackbar */}
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
@@ -323,7 +321,7 @@ class Header extends Component {
                         </React.Fragment>
                     }
                 />
-                {/* signup snackbar to display the message if customer registered successfully  */}
+                {/* Successful Signup Snackbar */}
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
@@ -346,7 +344,7 @@ class Header extends Component {
         );
     }
 
-    // clears all the values and required field validation messages and error messages when modal is opened
+    // Reset Modal values
     openModalHandler = () => {
         this.setState({
             modalIsOpen: true,
@@ -371,7 +369,7 @@ class Header extends Component {
         });
     }
 
-    // closes the modal
+    // Close Modal
     closeModalHandler = () => {
         this.setState({modalIsOpen: false});
     }
@@ -381,9 +379,7 @@ class Header extends Component {
         this.setState({value});
     }
 
-    /* when customer click's on login button then below function will be called 
-    performs field validation and displays login error message if cutomer tries to login with invalid credentials or 
-    contact no is not registered */
+    /* Login Functionality */
     loginClickHandler = () => {
 
         let contactNoRequired = false;
@@ -416,7 +412,7 @@ class Header extends Component {
             return;
         }
 
-        // validates the contact number
+        // Contact Number validation
         const isvalidContactNo = validator.isMobilePhone(this.state.loginContactNo);
         if ((contactNoRequired === false && !isvalidContactNo) || this.state.loginContactNo.length !== 10) {
             this.setState({
@@ -432,17 +428,15 @@ class Header extends Component {
         this.sendLoginDetails();
     }
 
-    // calls when value of the contact no field changes in login form
     inputLoginContactNoChangeHandler = (e) => {
         this.setState({loginContactNo: e.target.value});
     }
 
-    // calls when value of the password field changes in login form
     inputLoginPasswordChangeHandler = (e) => {
         this.setState({loginPassword: e.target.value});
     }
 
-    //closes the login snackbar
+    //Close Login
     loginSnackBarCloseHandler = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -452,7 +446,7 @@ class Header extends Component {
         });
     }
 
-    // Integrating login functionality with backend
+    //BackEnd Integration
     sendLoginDetails = () => {
         let loginData = null;
         let that = this;
