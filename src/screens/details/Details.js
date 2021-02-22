@@ -440,7 +440,7 @@ class Details extends Component {
                                                 aria-label="add"
                                                 onClick={() => this.cartAddButtonClickHandler(cartItem)}
                                             >
-                                                <i class="fa fa-plus" aria-hidden="true" style={{ color: "black" }} ></i>
+                                                <i className="fa fa-plus" aria-hidden="true" style={{ color: "black" }} ></i>
                                             </IconButton>
                                         </div>
                                         <div className="item-price">
