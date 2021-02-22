@@ -36,7 +36,7 @@ const styles = (theme) => ({
     restaurantName: {
         //Resturant Name Style.
         padding: "8px 0px 8px 0px",
-        "font-size": "30px",
+        "font-size": "30px",  
     },
     restaurantCategory: {
         //Resturant Category style.
@@ -92,8 +92,7 @@ const styles = (theme) => ({
     checkOutButton: {
         //Style for the Checkout button in the cart card.
         "font-weight": "400",
-    },
-
+    }
 });
 
 class Details extends Component {
@@ -319,12 +318,17 @@ class Details extends Component {
                             <Typography variant="h5" component="h5">
                                 {this.state.restaurantDetails.name}
                             </Typography>
-                        </div>
+                        </div><br/>
                         <Typography variant="subtitle1" component="p">
                             {this.state.restaurantDetails.locality}
-                        </Typography>
-                        <Typography variant="subtitle1" component="p">
-                            {this.state.restaurantDetails.categoriesName}
+                        </Typography><br/>
+                        <Typography variant="subtitle2" component="p">
+                            {this.state.categories.map((category, index) => (
+                                        <span
+                                            key={category.id + "category"}>{category.category_name}{index < this.state.categories.length - 1 ? ", " : " "}
+                                        </span>
+                                ))
+                            }
                         </Typography>
                         <div className="restaurant-rating-cost-section">
                             <div className="restaurant-rating-section">
@@ -334,8 +338,8 @@ class Details extends Component {
                                         {this.state.restaurantDetails.rating}
                                     </Typography>
                                 </div>
-                                <Typography  variant="caption" component="p">
-                                    AVERAGE RATING BY{" "}
+                                <Typography  variant="caption" component="p"  style={{ color: 'grey' }}>
+                                    AVERAGE RATING BY{" "}<br/>
                                     {
                                         <span className="restaurant-NoOfCustomerRated">
                                             {this.state.restaurantDetails.noOfCustomerRated}
@@ -425,9 +429,8 @@ class Details extends Component {
                                                 className={classes.cartItemButton}
                                                 id="minus-button"
                                                 aria-label="remove"
-                                                onClick={() => this.cartMinusButtonClickHandler(cartItem)}
-                                            >
-                                                <i class="fa fa-minus" aria-hidden="true" style={{ color: "black" }}></i>
+                                                onClick={() => this.cartMinusButtonClickHandler(cartItem)}>
+                                                <i className="fa fa-minus" aria-hidden="true" style={{ color: "black" }}></i>
                                             </IconButton>
                                             <Typography variant="subtitle1" component="p" className={classes.itemQuantity}>
                                                 {cartItem.quantity}
@@ -450,7 +453,7 @@ class Details extends Component {
                                 ))}
                                 <div className="total-amount-container">
                                     <Typography variant="subtitle2" component="p" className={classes.totalAmount}>
-                                        TOTAL amount
+                                        TOTAL AMOUNT
                                     </Typography>
                                     <div className="total-price">
                                         <i className="fa fa-inr" aria-hidden="true"></i>
