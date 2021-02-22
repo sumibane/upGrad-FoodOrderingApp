@@ -1,14 +1,16 @@
+/* Resturant Styling */
 .restaurant-details-section{
     display: flex;
     align-items: center;
     padding: 25px;
     background-color: rgb(231, 231, 231)
 }
+
 .restaurant-details{
     margin-left: 10px;
 }
-.restaurant-rating{
 
+.restaurant-rating{
      display: flex;
      align-items: baseline;
 
@@ -18,6 +20,7 @@
     display: flex;
     flex-direction: column;
 }
+
 .restaurant-rating-cost-section{
     display: flex;
     align-items: center;
@@ -28,15 +31,17 @@
     flex-direction: column;
     margin-left: auto;
 }
+
 .restaurant-avg-cost{
     display: flex;
-    align-items: baseline;
-} 
+    align-items: baseline;   
+}
 
 .restaurant-NoOfCustomerRated{
     font-weight: bold;
 }
 
+/* Items styling */
 .menu-details-cart-container{
     display: flex;
     padding: 30px;
@@ -64,19 +69,23 @@
     margin-left: 40px;
     color: grey;
 }
+
 .menu-item-container{
     display: flex;
     align-items: center;
 }
+
 .cart-menu-item-container{
     display: flex;
     align-items: center;
 
 }
+
 .total-price{
     display:flex;
     align-items: baseline;
 }
+
 #cart-total-price{
     font-weight: bold;
 }
@@ -87,23 +96,36 @@
     justify-content: space-between;
 }
 
+.quantity-container{
+    display: flex;
+
+    align-items: center;
+}
+
+/* Media Queries */
 @media screen and (max-width:600px){
     .restaurant-details-container{
         flex-direction: column;
     }
+
     .restaurant-details{
         text-align: center;
     }
+
     .restaurant-avg-cost-container{
         margin-left: auto;
     }
+
     .restaurant-rating{
         align-self: center;
 
     }
+
     .restaurant-avg-cost{
         place-content: center;
     }
+
+
     .menu-details-cart-container{
         flex-direction: column;
         margin-left: 16px;
@@ -111,13 +133,17 @@
         padding: 0px;
 
      }
+
      .menu-details{
          width:100%;
      }
+
      .my-cart{
          width: 100%;
          padding-top: 30px;
      }
+
+
 }
 
 @media screen and (min-width:600px){
@@ -125,10 +151,19 @@
         margin-left: 75px;
         width: 100%;
     }
+    
     .menu-details{
         width:45%;
-    }
-   .my-cart{
-    width: 45%;
+   }
+
+       .my-cart{
+           width: 45%;
+       }
+}
+
+
+@media screen and (min-width:1000px){
+    .restaurant-avg-cost-container{
+        margin-left: 350px;
     }
 }
