@@ -706,7 +706,7 @@ class Checkout extends Component {
                                                                 <span className="red">required</span>
                                                             </FormHelperText>
                                                         </FormControl><br /> <br />
-                                                        <FormControl className={classes.formControl}>
+                                                        <FormControl required className={classes.formControl}>
                                                             <InputLabel htmlFor="locality">Locality</InputLabel>
                                                             <Input id="locality" className="input-fields" locality={this.state.locality} fullWidth={true} onChange={this.inputLocalityChangeHandler} value={this.state.locality} />
                                                             <FormHelperText className={this.state.localityRequired}>
@@ -787,7 +787,7 @@ class Checkout extends Component {
                         </Stepper>
                         {this.state.activeStep === this.state.steps.length && (
                             <Paper square elevation={0} className={classes.resetContainer}>
-                                <Typography>View the summary and place your order now!</Typography>
+                                 <Typography style={{marginLeft: 10}} variant='h5'>View the summary and place your order now!</Typography>
                                 <Button onClick={this.changeButtonClickHandler} className={classes.button}>
                                     Change
                              </Button>

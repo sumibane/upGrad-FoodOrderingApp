@@ -405,7 +405,7 @@ class Details extends Component {
                             <CardHeader avatar={
                                 <Avatar aria-label="shopping-cart" className={classes.shoppingCart}>
                                     <Badge badgeContent={this.state.cartItems.length} color="primary"
-                                        showZero={true} invisible={this.state.badgeNotVisible} className={classes.badge}>
+                                        showZero={true} invisible={this.state.badgeNotVisible} className="badge">
                                         <ShoppingCartIcon />
                                     </Badge>
                                 </Avatar>
