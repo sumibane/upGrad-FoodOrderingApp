@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-//importing the header component
+//Import Header
 import Header from '../../common/header/Header';
 
-//importing UI components
+//Import UI
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import Card from '@material-ui/core/Card';
@@ -13,7 +13,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
-//importing the css file of the Home page
+//Import css
 import './Home.css';
 
 //Font-Awesome Dependency
@@ -51,7 +51,7 @@ class Home extends Component {
         this.mounted = true;
         this.getRestaurants();
         this.noOfColumns();
-        //when the window is resized calls the noOfColumns method
+        //Resizing the window
         window.addEventListener('resize', this.noOfColumns);
     }
 
@@ -108,13 +108,12 @@ class Home extends Component {
                         </GridList>
                     }
                 </div>
-            :""
-               
+            :""               
         )
         
     }
 
-    //fetches the restaurants from backend
+    //Get Resturant Details from API
     getRestaurants = () => {
         let that = this;
         let restaurantsData = null;
@@ -133,7 +132,7 @@ class Home extends Component {
         xhrRestaurants.send(restaurantsData);
     }
 
-    //method updates the no columns according to the window size
+    //Resize cards based on the display
     noOfColumns = () => {
 
         if (window.innerWidth >= 320 && window.innerWidth <= 600) {
@@ -169,7 +168,7 @@ class Home extends Component {
         }
     }
 
-    // integrating search box with ui
+    // Search Feature integration
     searchHandler = (event) => {
         let that = this;
         let filteredRestaurants = null;

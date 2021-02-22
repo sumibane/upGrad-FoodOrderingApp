@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-//importing material-ui styles
+//Import Material UI styles
 import {withStyles, ThemeProvider, createMuiTheme} from '@material-ui/core/styles';
 
-//importing material-ui components
+//Import Materail UI components
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -220,7 +220,7 @@ class Header extends Component {
                     </Tabs>
                     {this.state.value === 0 &&
                     <TabContainer>
-                        {/* login form with contact no and password input fields */}
+                        {/* Login Form */}
                         <FormControl required className="login-and-signup-forms">
                             <InputLabel htmlFor="contactno">Contact No</InputLabel>
                             <Input id="contactno" type="text" value={this.state.loginContactNo}
@@ -248,7 +248,7 @@ class Header extends Component {
                     }
                     {this.state.value === 1 &&
                     <TabContainer>
-                        {/* signup form contains firstname, lastname, email, password and contact no input fields */}
+                        {/* Signup Form */}
                         <FormControl required className="login-and-signup-forms">
                             <InputLabel htmlFor="firstname">First Name</InputLabel>
                             <Input id="firstname" type="text" value={this.state.signupFirstname}
@@ -374,7 +374,7 @@ class Header extends Component {
         this.setState({modalIsOpen: false});
     }
 
-    // changes the tabs inside modal
+    // Changing Modal tabs Handler
     tabChangeHandler = (event, value) => {
         this.setState({value});
     }
@@ -454,14 +454,14 @@ class Header extends Component {
         xhrLogin.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
                 let loginResponse = JSON.parse(this.responseText);
-                // displays the login error message
+                // Login Error Message
                 if (this.status === 401) {
                     that.setState({
                         loginErroMessage: loginResponse.message,
                         loginErroMessageRequired: "dispBlock"
                     });
                 }
-                // after successful login stores uuid, access-token, first-name inside session storage and displays the login snackbar
+                // Session storage when successfully logged in
                 if (this.status === 200) {
                     sessionStorage.setItem("uuid", loginResponse.id);
                     sessionStorage.setItem("access-token", xhrLogin.getResponseHeader("access-token"));
@@ -470,7 +470,7 @@ class Header extends Component {
                         loggedIn: true,
                         openLoginSnackBar: true
                     });
-                    //closes the modal after successful login
+                    // Auto Close modal after successful login
                     that.closeModalHandler();
                 }
             }
@@ -483,7 +483,7 @@ class Header extends Component {
         xhrLogin.send(loginData);
     }
 
-    // signup form validation 
+    // Sign Up Validation 
     signupClickHandler = () => {
 
         this.state.signupFirstname === "" ? this.setState({signupFirstnameRequired: "dispBlock"}) : this.setState({signupFirstnameRequired: "dispNone"});
@@ -521,7 +521,7 @@ class Header extends Component {
             this.setState({signupContactNoRequired: "dispNone"});
         }
 
-        // checks the email is valid or not
+        // Emnail Validator
         const isValidEmail = validator.isEmail(this.state.signupEmail);
         if (signupEmailRequired === false && !isValidEmail) {
             this.setState({
@@ -531,7 +531,7 @@ class Header extends Component {
             return;
         }
 
-        //check the password has  at least one capital letter, one small letter, one number, and one special character
+        // Password Validator
         const isValidPassword = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
         if (signupPasswordRequired === false && !isValidPassword.test(this.state.signupPassword)) {
             this.setState({
@@ -545,7 +545,7 @@ class Header extends Component {
             return;
         }
 
-        // checks the contact number is valid or not
+        // Phone number validator
         const isvalidContactNo = validator.isMobilePhone(this.state.signupContactNo);
         if ((signupContactNoRequired === false && !isvalidContactNo) || this.state.signupContactNo.length !== 10) {
             this.setState({
@@ -558,32 +558,32 @@ class Header extends Component {
         this.sendSignupDetails();
     }
 
-    // calls when value of the firstname field changes in signup form
+    // First Name Change Handler
     inputSignupFirstNameChangeHandler = (e) => {
         this.setState({signupFirstname: e.target.value});
     }
 
-    // calls when value of the lastname field changes in signup form
+    // Last Name Change Handler
     inputSignupLastNameChangeHandler = (e) => {
         this.setState({singupLastname: e.target.value});
     }
 
-    // calls when value of the email field changes in signup form
+    // Email Change Handler
     inputSignupEmailChangeHandler = (e) => {
         this.setState({signupEmail: e.target.value});
     }
 
-    // calls when value of the password field changes in signup form
+    // Password Change Handler
     inputSignupPasswordChangeHandler = (e) => {
         this.setState({signupPassword: e.target.value});
     }
 
-    // calls when value of the contact no field changes in signup form
+    // Contact No Change Handler
     inputSignupContactNoChangeHandler = (e) => {
         this.setState({signupContactNo: e.target.value});
     }
 
-    // clears the signup form after successful signup
+    // Clear Sign Up Form after successful sign up
     clearSignupForm = () => {
         this.setState({
             signupFirstname: "",
@@ -600,7 +600,7 @@ class Header extends Component {
         });
     }
 
-    // closes the signup snackbar
+    // Close Sign UP Snackbar
     signupSnackBarCloseHandler = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -610,7 +610,7 @@ class Header extends Component {
         });
     }
 
-    // Integrating signup functionality with backend
+    // Integrate with backend
     sendSignupDetails = () => {
         let signupData = JSON.stringify({
             "contact_number": this.state.signupContactNo,
@@ -625,14 +625,14 @@ class Header extends Component {
         xhrSignup.addEventListener("readystatechange", function () {
             if (this.readyState === 4) {
                 let responseText = JSON.parse(this.responseText);
-                // displays the signup error message
+                // Display Error message
                 if (this.status === 400) {
                     that.setState({
                         signupErrorMessage: responseText.message,
                         signupErrorMessageRequired: "dispBlock"
                     });
                 }
-                // after successful signup tab changes to login tab inside the modal and displays the signup snackbar
+                // Switch tabs after successful signup
                 if (this.status === 201) {
                     that.setState({
                         value: 0,
@@ -649,24 +649,24 @@ class Header extends Component {
         xhrSignup.send(signupData);
     }
 
-    // called when customer clicks on profile icon
+    // Profiel Icon Click
     onProfileIconClick = (e) => {
         this.setState({'menuState': !this.state.menuState, 'anchorEl': e.currentTarget});
     }
 
-    // closes the menu
+    // Close the Menu
     onMenuClose = () => {
         this.setState({'menuState': !this.state.menuState, 'anchorEl': null});
     }
 
-    // redirects to profile page when customer clicks on My Profile inside the menu
+    // Redirect to Profile page
     onMyProfile = () => {
         this.setState({
             loggedIn: true
         });
     }
 
-    // when customer clicks on logout inside the menu remove's access-token, uuid, first-name from sessionStorage and redirects to home page and closes the menu
+    // Logout Functionality, destroy session storage
     onLogout = () => {
         sessionStorage.removeItem('access-token');
         sessionStorage.removeItem('uuid');

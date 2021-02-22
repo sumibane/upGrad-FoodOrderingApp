@@ -8,12 +8,12 @@ import Home from './screens/home/Home';
 import Profile from './screens/profile/Profile';
 
 /**
- * This class represents the whole FoodOrdering Application.
+ * Food Ordering Application controller
  */
 class FoodOrderingApp extends Component {
     constructor() {
         super();
-        this.baseUrl = 'http://localhost:3000/api/'
+        this.baseUrl = 'http://localhost:8080/api/'
     }
 
     render() {
