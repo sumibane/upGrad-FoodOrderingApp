@@ -680,11 +680,11 @@ class Checkout extends Component {
                                                                 {this.state.addresses.map(address => (
                                                                     <GridListTile className={classes.gridListTile} key={address.id} style={{ borderColor: address.selected ? "rgb(224,37,96)" : "white" }}>
                                                                         <div className="grid-list-tile-container">
-                                                                            <Typography variant="body1" component="p">{address.flatBuildingName}</Typography>
-                                                                            <Typography variant="body1" component="p">{address.locality}</Typography>
-                                                                            <Typography variant="body1" component="p">{address.city}</Typography>
-                                                                            <Typography variant="body1" component="p">{address.state.state_name}</Typography>
-                                                                            <Typography variant="body1" component="p">{address.pincode}</Typography>
+                                                                            <Typography variant="subtitle2" component="p">{address.flatBuildingName}</Typography>
+                                                                            <Typography variant="subtitle2" component="p">{address.locality}</Typography>
+                                                                            <Typography variant="subtitle2" component="p">{address.city}</Typography>
+                                                                            <Typography variant="subtitle2" component="p">{address.state.state_name}</Typography>
+                                                                            <Typography variant="subtitle2" component="p">{address.pincode}</Typography>
                                                                             <IconButton className={classes.addressCheckButton} onClick={() => this.addressSelectedClickHandler(address.id)}>
                                                                                 <CheckCircleIcon style={{ color: address.selected ? "green" : "grey" }} />
                                                                             </IconButton>
