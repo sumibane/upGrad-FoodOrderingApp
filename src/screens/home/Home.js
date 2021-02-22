@@ -68,7 +68,7 @@ class Home extends Component {
                     {/* No Resturant Found*/}
                     {this.state.restaurants === null && this.state.loading === false ?
                        <div style={{paddingLeft:"40px"}}>
-                           <Typography variant="h5"><br/><p>No restaurant with the given name.</p></Typography>
+                           <div style={{paddingLeft:"40px"}}><Typography variant="h5"><br/><p>No restaurant with the given name.</p></Typography></div>
                         </div> :
                         <GridList cols={this.state.cards} cellHeight="auto">
                             {this.state.restaurants.map(restaurant => (
